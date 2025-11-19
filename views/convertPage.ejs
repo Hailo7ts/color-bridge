@@ -1,0 +1,95 @@
+  <!-- header -->
+    <div class=" bg-base-100 shadow-sm ">
+      <%- include('partials/header') %>
+    </div>
+
+  <!--  Convert -->
+    <div class="card lg:card-side lg:h-screen bg:[url(/images/home-bg.png)]">
+      <figure>
+        <img
+          class=""
+          src="../images/convert-main.png"
+          alt="Album" />
+      </figure>
+      <div class="card  w-full max-w-sm shrink-0 ">
+        
+        <!--  USER INPUT  -->        
+        <div class="card-body justify-center">        
+          <form action="/match" method="POST">
+            <fieldset class="fieldset">
+              <label class="label hex-or-rgb">HEX or RGB</label>
+              <select class="select" name="hex">
+                <option required disabled selected>HEX or RGB</option>
+                <option>HEX</option>
+                <option>RGB</option>
+              </select>
+
+              <label class="label">Color Code</label>
+              <input type="text" class="input" placeholder="Your Code Here!" name="colorCode"/>
+
+              <label class="label">Brand</label>
+              <select class="select" name="brand">
+                <option required disabled selected>Brand</option>
+                <option value="anyBrand">any brand</option>
+                <option value="avery">avery</option>
+                <option value="behr">behr</option>
+                <option value="benjamin-moore">benjamin-moore</option>
+                <option value="colorhouse">colorhouse</option>
+                <option value="dic">dic</option>
+                <option value="dunn-edwards">dunn-edwards</option>
+                <option value="dutch">dutch</option>
+                <option value="farrow-ball">farrow-ball</option>
+                <option value="hks">hks</option>
+                <option value="hl">hl</option>
+                <option value="ikea">ikea</option>
+                <option value="kilz">kilz</option>
+                <option value="kobra">kobra</option>
+                <option value="mpc">mpc</option>
+                <option value="neenah">neenah</option>
+                <option value="ppg">ppg</option>
+                <option value="ral">ral</option>
+                <option value="sherwin-williams">Sherwin Williams</option>
+                <option value="toyo">toyo</option>
+                <option value="trumatch">trumatch</option>
+                <option value="valspar">Valspar</option>
+                <option value="vista">vista</option>
+              </select>
+            
+              <button class="btn btn-neutral mt-4">Match!</button>
+            </fieldset>
+          </form>
+        
+
+        </div>
+      </div>
+
+        <!--  RESULT  -->
+         <% if (info) { %>
+           <div class="card lg:card-side  lg:w-1/2  bg-[<%= info.hex %>]">
+             <div class="card-body">
+               <h2 class="card-title"><%= info.name %></h2>
+               <p><%= info.label %></p>
+               <p><%= info.hex %></p>
+               <div class="card-actions justify-end">
+               </div>
+             </div>
+           </div>        
+          <%  } else{%>
+            <div class="card lg:card-side  lg:w-1/2  bg-[<%= info.hex %>]">
+             <div class="card-body">
+               <h2 class="card-title">Paint Color Name</h2>
+               <p>Paint Color Label</p>
+               <p>Paint Color Hex</p>
+               <div class="card-actions justify-end">
+               </div>
+             </div>
+           </div>    
+          <%  } %>
+    </div>
+  
+  
+  
+<!-- Footer -->
+      <%- include('partials/footer') %>
+ 
+
